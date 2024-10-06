@@ -1,10 +1,16 @@
 {
-  "name": "ticket-project",
+  "name": "ticket-auth-project",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "keywords": [
+  "javascript",
+  "typescript",
+  "typescript-backend",
+  "nestjs"
+  ] ,
+  "author": "MehradShadmand",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
