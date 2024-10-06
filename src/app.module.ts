@@ -9,7 +9,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/event-management'),
+    MongooseModule.forRoot('mongodb://localhost:27017/event-management'),
     MongooseModule.forFeature([{ name: 'Event', schema: EventSchema }]),
     MongooseModule.forFeature([{ name: 'Ticket', schema: TicketSchema }]),
     EventsModule,
