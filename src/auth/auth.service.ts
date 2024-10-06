@@ -14,21 +14,22 @@ export class AuthService {
     const user = await this.userService.findByUsername(username);
     if (user && (await bcrypt.compare(password, user.password))) {
       const result = user.toObject();
-      delete result.password; // حذف رمز عبور
-      return result; // برگشت نتیجه بدون رمز عبور
+      return {
+        username: result.username,
+        id: result._id,
+      };
     }
-    return null;
+    return 'Not Authorized';
   }
 
-  async login(user: any) {
-    const users = await this.validateUser(user.username, user.password);
-    if (!users) {
+  async login(payload: any) {
+    const { username, password } = payload;
+
+    const user = await this.validateUser(username, password);
+    if (!user) {
       throw new UnauthorizedException('Invalid credentials'); // در صورتی که اطلاعات نادرست باشد
     }
-    const payload = { username: user.username, sub: user._id };
-    if (payload) {
-      console.log(user._id);
-    }
+
     return {
       access_token: this.jwtService.sign(payload),
     };
