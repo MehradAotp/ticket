@@ -2,4 +2,5 @@
 export interface createUserDto {
   username: string;
   id: string;
+  email: string;
 }

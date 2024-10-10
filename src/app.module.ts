@@ -7,6 +7,7 @@ import { TicketSchema } from './tickets/ticket.schema';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProfilesModule } from './profiles/profiles.module';
+import { OtpModule } from './otp/otp.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProfilesModule } from './profiles/profiles.module';
     AuthModule,
     UsersModule,
     ProfilesModule,
+    OtpModule,
   ],
 })
 export class AppModule {}

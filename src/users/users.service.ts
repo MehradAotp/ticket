@@ -12,9 +12,17 @@ export class UsersService {
     private readonly profilesService: ProfilesService,
   ) {}
 
-  async createUser(username: string, password: string): Promise<createUserDto> {
+  async createUser(
+    username: string,
+    password: string,
+    email: string,
+  ): Promise<createUserDto> {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new this.userModel({ username, password: hashedPassword });
+    const user = new this.userModel({
+      username,
+      email,
+      password: hashedPassword,
+    });
     const savedUser = await user.save(); // ذخیره کاربر در دیتابیس
     await this.profilesService.createProfile(
       savedUser._id.toString(),
@@ -23,6 +31,7 @@ export class UsersService {
     const result = savedUser.toObject(); // تبدیل به آبجکت
     return {
       username: result.username,
+      email: result.email,
       id: result._id.toString(), // تبدیل به رشته
     };
   }
@@ -31,6 +40,9 @@ export class UsersService {
     return this.userModel.findOne({ username }).exec();
   }
 
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.userModel.findOne({ email }).exec();
+  }
   async deleteUser(id: string) {
     return this.userModel.findByIdAndDelete(id);
   }
