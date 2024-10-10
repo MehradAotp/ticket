@@ -30,7 +30,8 @@ http://localhost:3000/users     <mark>POST</mark>
 
 ```json
 "username" : "example",
-"password" : "password123"
+"password" : "password123",
+"email" : "example@gmail.com"
 ```
 after register you can LOGIN and get token jwt
 
@@ -42,6 +43,18 @@ url : http://localhost:3000/auth/login    <mark>POST</mark>
 "username" : "example",
 "password" : "password123"
 ```
+
+After logging in, a code will be sent to your email<br>
+And you should send to the following address with this method<br>
+
+url : http://localhost:3000/auth/verify-otp
+
+and Example data from body :
+```json
+  "email": "Example@gmail.com",
+  "otp": "773120"
+```
+
 and get example token : <br>
 ```json
   "access_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laHJhZDMiLCJpYXQiOjE3Mjc5MDA2MTIsImV4cCI6MTcyNzkwNDIxMn0.gaVp4qIXZsjk0gW2-gdyrybIRnufSP0F4tobmjWl-Do"
