@@ -1,7 +1,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is to simulate and understand NestJS concepts.
 
 ## Project setup
 
@@ -22,17 +22,21 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 ## Working with this API
- <b>First Register User in Postman.</b>
+ <b>First REGISTER User in Postman.</b>
+
 http://localhost:3000/users     <mark>POST</mark>
-<p>Example : </p>
+
+<p>Example Data From Body: </p>
 
 ```json
 "username" : "example",
 "password" : "password123"
 ```
-after register you can login and get token jwt
-http://localhost:3000/auth/login    <mark>POST</mark>
-<p>Example : </p>
+after register you can LOGIN and get token jwt
+
+url : http://localhost:3000/auth/login    <mark>POST</mark>
+
+<p>Example Data From Body : </p>
 
 ```json
 "username" : "example",
@@ -44,9 +48,11 @@ and get example token : <br>
 ```
 <hr>
  <b>event(example cinema Or ...)</b><br>
-create event.
-http://localhost:3000/events   <mark>POST</mark>
-<p>Example Data : </p>
+Create event.
+
+url : http://localhost:3000/events   <mark>POST</mark>
+
+<p>Example Data From Body : </p>
 
 ```json
 "title": "Joker",
@@ -55,9 +61,11 @@ http://localhost:3000/events   <mark>POST</mark>
   "location": "Stadium A",
   "price": 836
   ``` 
-  and update data 
+  and update data  : 
+  
   http://localhost:3000/events   <mark>PATCH</mark>
-  <p>Example Data : </p>
+
+  <p>Example Data From Body : </p>
 
 ```json
 "title": "Mokhtar",
@@ -66,9 +74,10 @@ http://localhost:3000/events   <mark>POST</mark>
   "location": "Stadium A",
   "price": 50
   ```
-  get all event and event by id
+  **Get all event and event by id**
+
   http://localhost:3000/events    <mark>GET</mark><br>
-  For all Data Send Empty Data . but for get by id Send eventId In Param
+  For all Data Send Empty Data . but for get by id Send eventId In <mark>Param</mark>
   <p>Example : </p>
 http://localhost:3000/events/66fd15ae3802e4409738f01e  <mark>GET</mark>
 
@@ -88,6 +97,32 @@ http://localhost:3000/tickets   <mark>POST</mark>
 ```
 All Ticket AND Get Ticket By ID  In Param    <mark>GET</mark>
 and Delete Ticket By Id In Param      <mark>DELETE</mark>
+
+# Profile
+Now you can Create Profile And Upload Photo! And You need Use Token Jwt
+
+url : http://localhost:3000/profiles/      <mark>POST</mark>
+
+And Example Data From Body: 
+
+```json
+{
+    "userId" : "66fff0ee47a771846d71dfc9",
+    "bio" : "Profile Example"
+}
+```
+<br>
+<br>
+Well, now you have created your profile and now it's time to upload a photo!
+
+url : http://localhost:3000/profiles/upload/66fda7fbb76d4728ea2e99a0    <mark>POST</mark>
+
+Here you need to enter your id in param and then in send header information set field value as "file" and then upload your photo and send request.
+
+**Get Profile**
+you can Get Profile. Data From PARAM
+url : http://localhost:3000/profiles/66fda7fbb76d4728ea2e99a0  <mark>GET</mark>
+
 
 ## Authentication
 After logging in, you will get a token. and expire in 1h<br>

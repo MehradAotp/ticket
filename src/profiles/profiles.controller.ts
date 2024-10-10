@@ -5,17 +5,20 @@ import {
   Param,
   Post,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ProfilesService } from './profiles.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { Profile } from './profile.schema';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('profiles')
 export class ProfilesController {
   constructor(private readonly profileService: ProfilesService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createProfile(
     @Body() createProfileDto: CreateProfileDto,
@@ -26,6 +29,7 @@ export class ProfilesController {
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('/upload/:id')
   @UseInterceptors(FileInterceptor('file'))
   async uploadProfilePicture(
@@ -34,6 +38,8 @@ export class ProfilesController {
   ) {
     return this.profileService.uploadProfilePicture(userId, file);
   }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getProfile(@Param('id') userId: string) {
     return this.profileService.getProfile(userId);
