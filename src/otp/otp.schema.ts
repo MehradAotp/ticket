@@ -8,8 +8,9 @@ export class OTP {
   email: string;
   @Prop({ required: true })
   code: string;
-  @Prop({ required: true })
-  expiration: string;
+  @Prop({ required: true, expires: '1m' })
+  expiration: Date;
 }
 
 export const OtpSchema = SchemaFactory.createForClass(OTP);
+OtpSchema.index({ expiration: 1 }, { expireAfterSeconds: 1 });

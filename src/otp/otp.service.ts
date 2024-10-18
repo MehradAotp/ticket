@@ -27,15 +27,15 @@ export class OtpService {
       port: 587, // یا 465 برای SSL
       secure: false, // true برای 465 و false برای 587
       auth: {
-        user: 'YourEmail@gmail.com',
+        user: process.env.EMAIL_USER,
         // از app password استفاده کنید
-        pass: 'YourPassword',
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     // ارسال ایمیل
     await transporter.sendMail({
-      from: 'aotpmehrad@gmail.com',
+      from: process.env.EMAIL_USER,
       to: email,
       subject: 'Your OTP Code',
       text: `Your OTP code is ${code}`,
@@ -45,7 +45,7 @@ export class OtpService {
     const otp = await this.otpModel.findOne({ email, code });
     if (!otp) return false;
 
-    const now = Date();
+    const now = new Date();
     if (otp.expiration < now) {
       //otp منقضی شده
       return false;

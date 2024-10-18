@@ -14,7 +14,7 @@ import { OtpModule } from 'src/otp/otp.module';
     OtpModule,
     JwtModule.register({
       secret: 'secretMerhad',
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: '2h' },
     }),
   ],
   providers: [AuthService, JwtStrategy],

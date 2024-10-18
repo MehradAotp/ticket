@@ -11,7 +11,6 @@ export class TicketsService {
     @InjectModel(Ticket.name) private ticketModel: Model<Ticket>,
     private eventService: EventsService,
   ) {}
-  //ایجاد تیکت
   async createTicket(createTicketDto: CreateTicketDto): Promise<Ticket> {
     const { username, eventId, quantity } = createTicketDto;
 
@@ -32,13 +31,23 @@ export class TicketsService {
     return await newTicket.save();
   }
 
-  //دریافت کل تیکت ها
   async getAllTicket(): Promise<Ticket[]> {
     return this.ticketModel.find().populate('eventId').exec();
   }
 
   async getTicketById(id: string): Promise<Ticket> {
     const ticket = this.ticketModel.findById(id).exec();
+    if (!ticket) {
+      throw new NotFoundException('ticket not found');
+    }
+    return ticket;
+  }
+
+  async updateTicket(
+    id: string,
+    updateTicketDto: CreateTicketDto,
+  ): Promise<Ticket> {
+    const ticket = this.ticketModel.findByIdAndUpdate(id, updateTicketDto);
     if (!ticket) {
       throw new NotFoundException('ticket not found');
     }

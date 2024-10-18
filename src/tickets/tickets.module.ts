@@ -10,7 +10,7 @@ import { EventsModule } from 'src/events/events.module';
     MongooseModule.forFeature([{ name: Ticket.name, schema: TicketSchema }]),
     EventsModule,
   ],
-  controllers: [TicketsController], // کنترلرهای مربوط به بلیت
-  providers: [TicketsService], // سرویس‌های مربوط به بلیت
+  controllers: [TicketsController],
+  providers: [TicketsService],
 })
 export class TicketsModule {}

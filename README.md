@@ -145,6 +145,10 @@ Example Jwt : <br>
   "access_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laHJhZDMiLCJpYXQiOjE3Mjc5MDA2MTIsImV4cCI6MTcyNzkwNDIxMn0.gaVp4qIXZsjk0gW2-gdyrybIRnufSP0F4tobmjWl-Do"
 ```
 
+### Easy documentation
+http://localhost:3000/api
+
+
 ## License
 
 [MIT licensed](https://github.com/MehradAotp/ticket/blob/master/LICENSE).

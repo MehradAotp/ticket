@@ -8,6 +8,9 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProfilesModule } from './profiles/profiles.module';
 import { OtpModule } from './otp/otp.module';
+import { config } from 'dotenv';
+
+config();
 
 @Module({
   imports: [
