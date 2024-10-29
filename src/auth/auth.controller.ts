@@ -66,9 +66,9 @@ export class AuthController {
     schema: {
       type: 'object',
       properties: {
-        username: {
+        email: {
           type: 'string',
-          example: 'Mehrad',
+          example: 'Mehrad@gmail.com',
         },
         otp: {
           type: 'string',
